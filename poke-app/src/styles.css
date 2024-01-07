@@ -12,39 +12,58 @@ body {
     width: 100%;
 }
 .container-1 {
+    text-wrap: wrap;
     text-align: center;
-    padding-top: 8vw;
+    padding-top: 0vw;
     margin-left: 8vw;
-
     height: 35vw;
-    min-height: 250px;
+    min-height: 280px;
     min-width: 200px;
     width: 30vw;
     background-color: paleturquoise;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);;
 }
 .container-2 {
     text-align: center;
-    padding-top: 8vw;
+    padding-top: 0vw;
     margin-left: 5vw;
     margin-right: 5vw;
     height: 35vw;
     width: 30vw;
-    min-height: 250px;
+    min-height: 280px;
     min-width: 200px;
     background-color: paleturquoise;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 .container-1:hover {
-    background-color: lightblue;
+    background-color: lightcyan;
     transform: rotate(-3deg) scale(1.05);
     transition: 0.2s ease-out;
 }
 .container-2:hover {
-    background-color: lightblue;
+    background-color: lightcyan;
     transform: rotate(3deg) scale(1.05);
     transition: 0.2s ease-in-out;   
 }
-
+.dunno_button {
+    position: relative;
+    left: 20%;
+    background-color: palegoldenrod;
+    width: 50vw;
+    border-radius: 10px;
+    font-weight: bold;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 5vh 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.dunno_button:hover {
+    background-color: lightgoldenrodyellow;
+    transform: rotate(3deg) scale(1.05);
+    transition: 0.2s ease-in-out;   
+}

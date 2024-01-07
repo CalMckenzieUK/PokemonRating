@@ -1,47 +1,49 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+import { onMount } from 'svelte';
+import  container_module  from './main.js';
+
+let counter_1 = 0;
+let counter_2 = 0;
+let dunno_counter = 0;
+
+function incrementCounter() {
+  counter_1 += 1;
+};
+
+function incrementCounter2() {
+  counter_2 += 1;
+};
+
+function increment_dunno_counter() {
+  dunno_counter += 1;
+}
+
+let pokemon_1 = "bulbasaur";
+let pokemon_2 = "charmander";
+
 </script>
 
 <main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
 
-  <div class="card">
-    <Counter />
-  </div>
+  <body>
 
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
+    <header>
+        <h1>Which would you rather have?</h1>
+    </header>
+<div class="pair-container">
+    <div class="container-1" on:click={incrementCounter}>    
+      <h2>{pokemon_1} {counter_1}</h2>
+            <img src="https://via.placeholder.com/150" alt="Placeholder">
+    </div>
 
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
+    <div class="container-2" on:click={incrementCounter2}>
+            <h2>{pokemon_2} {counter_2}</h2>
+            <img src="https://via.placeholder.com/150" alt="Placeholder">
+    </div>
+</div>
+<br>
+    <div class="dunno_button" on:click={increment_dunno_counter} aria-roledescription="button">Don't know! {dunno_counter}
+    </div>
+</body>
+
 </main>
-
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
-</style>
