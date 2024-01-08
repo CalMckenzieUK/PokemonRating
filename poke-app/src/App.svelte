@@ -11,8 +11,8 @@ let pokemon_imgs = {'Eevee ♂': 'https://raw.githubusercontent.com/PokeAPI/spri
 
 let pokemon_1 = "";
 let pokemon_2 = "";
-let pokemon_img_1 = "https://static.wikia.nocookie.net/pokemontowerdefense/images/c/ce/Missingno_image.png/revision/latest?cb=20180809204127";
-let pokemon_img_2 = "https://static.wikia.nocookie.net/pokemontowerdefense/images/c/ce/Missingno_image.png/revision/latest?cb=20180809204127";
+let pokemon_img_1 = "https://wiki.p-insurgence.com/images/0/09/722.png";
+let pokemon_img_2 = "https://wiki.p-insurgence.com/images/0/09/722.png";
 
 
 let counter_1 = 0;
