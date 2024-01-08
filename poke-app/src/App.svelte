@@ -1,12 +1,12 @@
 <script>
 import { onMount } from 'svelte';
-import pokemon_list  from './ingest_list';
-import pokemon_dict from './import_dict';
+import dict from './dict.js';
+import list from './list.js';
 
 // let pokemon_list = ['Eevee ♂', 'Pikachu ♀', 'Dragonite (?)', 'Bulbasaur ♀', 'Vaporeon ♂'];
 
-let pokemon_imgs = pokemon_dict;
-
+let pokemon_imgs = dict;
+let pokemon_list = list;
 
 // let pokemon_imgs = {'Eevee ♂': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png',
 //                     'Pikachu ♀': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',

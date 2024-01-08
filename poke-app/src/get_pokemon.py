@@ -136,11 +136,11 @@ for i in individual_pokemon:
 
 with open('/workspaces/PokemonRating/poke-app/src/pokemon_links.txt', 'w') as f:
     for i in pokemon_link_dict:
-        f.write(str(i+':'+pokemon_link_dict[i])+'\n')
+        f.write(str(i+', '+pokemon_link_dict[i])+'\n')
 
 with open('/workspaces/PokemonRating/poke-app/src/individual_pokemon.txt', 'w') as f:
     for i in individual_pokemon:
-        f.write(str(i[0]+' '+i[1])+'\n')
+        f.write(str("'"+i[0]+' '+i[1])+"',\n")
 
 #     pokemon_link_dict[i] = 'https://www.tppcrpg.net/' + i.replace(' ','').lower() + '.html'
 

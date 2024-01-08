@@ -1,3 +1,4 @@
+let list = [
 'GoldenPidgeot M',
 'GoldenGolbat M',
 'GoldenExeggutor F',
@@ -5720,4 +5721,7 @@
 'Chimchar F',
 'Charmander M',
 'Charmander F',
-'Charmander U',
+'Charmander U'
+]
+
+export default list;

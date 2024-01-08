@@ -1,3 +1,9 @@
 {
-  "type": "module"
+  "type": "module",
+  "fs": {
+    "allow": [
+      "read",
+      "write"
+    ]
+  }
 }
