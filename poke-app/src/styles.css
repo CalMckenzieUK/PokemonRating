@@ -81,6 +81,7 @@ body {
     max-width: max-content;
     max-height: max-content;
     border-radius: 10px;
+    bottom: 10px;
 }
 .previous_battle {
     font-size: max(10px, 16px);
