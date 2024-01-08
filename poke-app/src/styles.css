@@ -78,8 +78,8 @@ body {
     transition: 0.2s ease-in-out;   
 }
 .image {
-    height: 146px;
-    width: 132px;
+    max-width: max-content;
+    max-height: max-content;
     border-radius: 10px;
 }
 .previous_battle {
