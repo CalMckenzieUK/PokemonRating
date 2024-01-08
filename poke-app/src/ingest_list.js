@@ -1,4 +1,4 @@
-import fs from "fs";
+import * as fs from 'fs';
 
 var text = fs.readFileSync("./individual_pokemon.txt");
 let pokemon_list = text.toString().split("\n");
