@@ -1,61 +1,64 @@
 <script>
 import { onMount } from 'svelte';
+import fs from "fs";
 
-let pokemon_list = ['Eevee ♂', 'Pikachu ♀', 'Dragonite (?)', 'Bulbasaur ♀', 'Vaporeon ♂'];
+var text = fs.readFileSync("./individual_pokemon.txt");
+let pokemon_list = text.toString().split("\n");
+
 let pokemon_imgs = {'Eevee ♂': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png',
                     'Pikachu ♀': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
                     'Dragonite (?)': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png',
                     'Bulbasaur ♀': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
                     'Vaporeon ♂': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png'};
 
-// function to send data to the server and get a response
-async function send_data_to_server(data) {
-  const response = await fetch('http://localhost:5000/pokemon', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  });
 
-  const json = await response.json();
-  return json;
-}
-
-let pokemon_1 = "bulbasaur";
-let pokemon_2 = "charmander";
-let pokemon_img_1 = pokemon_imgs[pokemon_1];
-let pokemon_img_2 = pokemon_imgs[pokemon_2];
+let pokemon_1 = "";
+let pokemon_2 = "";
+let pokemon_img_1 = "https://static.wikia.nocookie.net/pokemontowerdefense/images/c/ce/Missingno_image.png/revision/latest?cb=20180809204127";
+let pokemon_img_2 = "https://static.wikia.nocookie.net/pokemontowerdefense/images/c/ce/Missingno_image.png/revision/latest?cb=20180809204127";
 
 
 let counter_1 = 0;
 let counter_2 = 0;
 let dunno_counter = 0;
 var last_result = {pokemon_1: 'none', pokemon_2: 'none'};
-var last_result_list = '';
+var last_result_list = "Click a MissingNo to start...";
 
 function one_wins() {
   let results = {pokemon_1: 'winner', pokemon_2: 'loser'};
   // send_data_to_server(results);
-  next_pokemon();
   last_result = results;
-  last_result_list = pokemon_1+ " beats " + pokemon_2;
+  if (pokemon_1 == "") {
+    last_result_list = "Select a Pokemon and your latest choice will be shown here!";
+  }
+  else {
+  last_result_list = "Last result was: <br>" + pokemon_1+ " beats " + pokemon_2;}
+  next_pokemon();
 }
 
 function two_wins() {
   let results = {pokemon_1: 'loser', pokemon_2: 'winner'};
   // send_data_to_server(results);
-  next_pokemon();
   last_result = results;
-  last_result_list = pokemon_2+ " beats " + pokemon_1;
+  if (pokemon_1 == "") {
+    last_result_list = "Select a Pokemon and your latest choice will be shown here!";
+  }
+  else {
+  last_result_list = "Last result was: <br>" +pokemon_2 + " beats " + pokemon_1;}
+  next_pokemon();
 } 
 
 function draw() {
   let results = {pokemon_1: 'draw', pokemon_2: 'draw'};
   // send_data_to_server(results);
-  next_pokemon();
   last_result = results;
-  last_result_list = pokemon_1 + " drew against " + pokemon_2;
+  if (pokemon_1 == "") {
+    last_result_list = "Select a Pokemon and your latest choice will be shown here!";
+  }
+  else {
+  last_result_list = "Last result was: <br>" +pokemon_1 + " drew against " + pokemon_2;}
+  next_pokemon();
+
 }
 
 
@@ -89,17 +92,19 @@ function increment_dunno_counter() {
 <div class="pair-container">
     <div class="container-1" on:click={one_wins}>    
       <h2>{pokemon_1}</h2>
-            <img src={pokemon_img_1} alt="Placeholder">
+            <img src={pokemon_img_1} class="image" alt="Placeholder">
     </div>
 
     <div class="container-2" on:click={two_wins}>
             <h2>{pokemon_2}</h2>
-            <img src={pokemon_img_2} alt="Placeholder">
+            <img src={pokemon_img_2} class="image" alt="Placeholder">
     </div>
 </div>
 <br>
-    <div class="dunno_button" on:click={draw} aria-roledescription="button">Don't know! <br> <br> Last result was: <br> {last_result_list}
+    <div class="dunno_button" on:click={draw} aria-roledescription="button">Don't know! <br> <br> 
     </div>
+    <br>
+    <div class="previous_battle"> <br> {@html last_result_list} </div>
 </body>
 
 </main>

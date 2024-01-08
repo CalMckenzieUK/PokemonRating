@@ -1,17 +1,24 @@
+main {
+    height: 80vh;
+}
 body {
     font-family: Verdana, Tahoma, sans-serif;
-    font-size: 16px;
-    background-color: gainsboro;
+    font-size: 2vw;
+    background-color: lightsteelblue;
     justify-content: center;
     text-align: center;
 }
 .pair-container {
+    max-height: 60vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     flex-direction: column;
     width: 100%;
 }
 .container-1 {
+    font-size: max(16px, 16px);
+    max-height: 300px;
+    max-width: 600px;
     text-wrap: wrap;
     text-align: center;
     padding-top: 0vw;
@@ -25,6 +32,9 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);;
 }
 .container-2 {
+    font-size: max(16px, 16px);
+    max-height: 300px;
+    max-width: 600px;
     text-align: center;
     padding-top: 0vw;
     margin-left: 5vw;
@@ -48,22 +58,45 @@ body {
     transition: 0.2s ease-in-out;   
 }
 .dunno_button {
-    position: relative;
-    left: 20%;
+    font-size: max(16px, 16px);
+    margin:auto;
+    max-width: 450px;
+    max-height: 20px;
     background-color: palegoldenrod;
     width: 50vw;
+    height: 3vw;
     border-radius: 10px;
     font-weight: bold;
     color: black;
     padding: 15px 32px;
     text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 5vh 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 .dunno_button:hover {
     background-color: lightgoldenrodyellow;
     transform: rotate(3deg) scale(1.05);
     transition: 0.2s ease-in-out;   
+}
+.image {
+    max-height: 250px;
+    max-width: 250px;
+    height: 30vw;
+    width: 30vw;
+    border-radius: 10px;
+}
+.previous_battle {
+    font-size: max(10px, 16px);
+    max-width: 900px;
+    max-height: 90px;
+    min-height: 80px;
+    margin:auto;
+    background-color: pink;
+    width: 78vw;
+    height: 10vw;
+    border-radius: 10px;
+    font-weight: bold;
+    color: black;
+    /* padding: 15px 15vw; */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); */
+    
 }
