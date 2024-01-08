@@ -78,8 +78,8 @@ body {
     transition: 0.2s ease-in-out;   
 }
 .image {
-    max-height: 250px;
-    max-width: 250px;
+    max-height: 146px;
+    max-width: 132px;
     height: 30vw;
     width: 30vw;
     border-radius: 10px;
