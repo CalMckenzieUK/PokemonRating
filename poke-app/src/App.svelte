@@ -1,12 +1,18 @@
 <script>
 import { onMount } from 'svelte';
+import pokemon_list  from './ingest_list';
+import pokemon_dict from './import_dict';
 
-let pokemon_list = ['Eevee ♂', 'Pikachu ♀', 'Dragonite (?)', 'Bulbasaur ♀', 'Vaporeon ♂'];
-let pokemon_imgs = {'Eevee ♂': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png',
-                    'Pikachu ♀': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-                    'Dragonite (?)': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png',
-                    'Bulbasaur ♀': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-                    'Vaporeon ♂': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png'};
+// let pokemon_list = ['Eevee ♂', 'Pikachu ♀', 'Dragonite (?)', 'Bulbasaur ♀', 'Vaporeon ♂'];
+
+let pokemon_imgs = pokemon_dict;
+
+
+// let pokemon_imgs = {'Eevee ♂': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png',
+//                     'Pikachu ♀': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
+//                     'Dragonite (?)': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png',
+//                     'Bulbasaur ♀': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
+//                     'Vaporeon ♂': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png'};
 
 
 let pokemon_1 = "";

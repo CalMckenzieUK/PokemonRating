@@ -134,9 +134,9 @@ for i in individual_pokemon:
             pokemon_link_dict[str(i[0]+' '+i[1])] = link
 
 
-with open('/workspaces/PokemonRating/poke-app/src/pokemon_links.json', 'w') as f:
+with open('/workspaces/PokemonRating/poke-app/src/pokemon_links.txt', 'w') as f:
     for i in pokemon_link_dict:
-        f.write(f'{i},{pokemon_link_dict[i]}\n')
+        f.write(str(i+':'+pokemon_link_dict[i])+'\n')
 
 with open('/workspaces/PokemonRating/poke-app/src/individual_pokemon.txt', 'w') as f:
     for i in individual_pokemon:
