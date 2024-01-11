@@ -1,3 +1,6 @@
+.aws 
+.env
+
 # Logs
 logs
 *.log

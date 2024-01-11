@@ -3,17 +3,10 @@ import { onMount } from 'svelte';
 import dict from './dict.js';
 import list from './list.js';
 
-// let pokemon_list = ['Eevee ♂', 'Pikachu ♀', 'Dragonite (?)', 'Bulbasaur ♀', 'Vaporeon ♂'];
+
 
 let pokemon_imgs = dict;
 let pokemon_list = list;
-
-// let pokemon_imgs = {'Eevee ♂': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png',
-//                     'Pikachu ♀': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-//                     'Dragonite (?)': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png',
-//                     'Bulbasaur ♀': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-//                     'Vaporeon ♂': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png'};
-
 
 let pokemon_1 = "";
 let pokemon_2 = "";
@@ -76,31 +69,23 @@ function next_pokemon(){
   pokemon_img_1 = pokemon_imgs[pokemon_1];
   pokemon_img_2 = pokemon_imgs[pokemon_2];
 };
-
-
-function increment_dunno_counter() {
-  dunno_counter += 1;
-}
-
-
 </script>
 
 <main>
-
   <body>
 
-    <header>
+    <header draggable="false">
         <h1>Which would you rather have?</h1>
     </header>
 <div class="pair-container">
-    <div class="container-1" on:click={one_wins}>    
-      <h2>{pokemon_1}</h2>
-            <img src={pokemon_img_1} class="image" alt="Placeholder">
+<div class="container-1" on:click={one_wins} draggable="false">    
+  <h2>{pokemon_1}</h2>
+            <img src={pokemon_img_1} class="image" alt="Placeholder" draggable="false">
     </div>
 
-    <div class="container-2" on:click={two_wins}>
+    <div class="container-2" on:click={two_wins} draggable="false">
             <h2>{pokemon_2}</h2>
-            <img src={pokemon_img_2} class="image" alt="Placeholder">
+            <img src={pokemon_img_2} class="image" alt="Placeholder" draggable="false">
     </div>
 </div>
 <br>
