@@ -1,26 +1,18 @@
+import dotenv from 'dotenv'
+import mysql from 'mysql2'
 
-import AWS from '../aws/aws-config.js';
-    
-const handleClick = async () => {
-      // Inside handleClick function
-    const dynamoDB = new AWS.DynamoDB.DocumentClient();
+dotenv.config()
 
-    const params = {
-      TableName: 'pokemon-ratings',
-      Item: {
-        'id': '123', 'name': 'John Doe'
-      },
-    };
-
-    try {
-      const data = await dynamoDB.put(params).promise();
-      console.log('Record created successfully:', data);
-    } catch (error) {
-      console.error('Error creating record:', error);
+const connection = mysql.createConnection(process.env.DATABASE_URL)
+connection.query(
+  'CREATE TABLE IF NOT EXISTS pokemon (id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255) NOT NULL, type VARCHAR(255) NOT NULL, img VARCHAR(255) NOT NULL)',
+  function (err, results, fields) {
+    if (err) {
+      console.log(err.message)
+    } else {
+      console.log('Table created successfully!')   
     }
-
-    };
-
-handleClick();
-
-export default handleClick;
+  }
+)
+console.log('Connected to PlanetScale!')
+connection.end()
