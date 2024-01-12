@@ -2,8 +2,9 @@
 import { onMount } from 'svelte';
 import dict from './dict.js';
 import list from './list.js';
+// import query from './import_test.js'
 
-
+// query('show columns from pokemon rating');
 
 let pokemon_imgs = dict;
 let pokemon_list = list;
@@ -22,36 +23,40 @@ var last_result_list = "Click a MissingNo to start...";
 
 function one_wins() {
   let results = {pokemon_1: 'winner', pokemon_2: 'loser'};
-  // send_data_to_server(results);
+  let winner = '1'
+  
   last_result = results;
   if (pokemon_1 == "") {
     last_result_list = "Select a Pokemon and your latest choice will be shown here!";
   }
   else {
-  last_result_list = "Last result was: <br>" + pokemon_1+ " beats " + pokemon_2;}
+    // query('INSERT INTO pokemon_rating (left_pokemon_name, right_pokemon_name, who_won) VALUES ("'+pokemon_1+'","'+pokemon_2+'","'+winner+'")');
+    last_result_list = "Last result was: <br>" + pokemon_1+ " beats " + pokemon_2;}
   next_pokemon();
 }
 
 function two_wins() {
   let results = {pokemon_1: 'loser', pokemon_2: 'winner'};
-  // send_data_to_server(results);
+  let winner = '2'
   last_result = results;
   if (pokemon_1 == "") {
     last_result_list = "Select a Pokemon and your latest choice will be shown here!";
   }
   else {
+  // query('INSERT INTO pokemon_rating (left_pokemon_name, right_pokemon_name, who_won) VALUES ("'+pokemon_1+'","'+pokemon_2+'","'+winner+'")');
   last_result_list = "Last result was: <br>" +pokemon_2 + " beats " + pokemon_1;}
   next_pokemon();
 } 
 
 function draw() {
   let results = {pokemon_1: 'draw', pokemon_2: 'draw'};
-  // send_data_to_server(results);
+  let winner = '0'
   last_result = results;
   if (pokemon_1 == "") {
     last_result_list = "Select a Pokemon and your latest choice will be shown here!";
   }
   else {
+  // query('INSERT INTO pokemon_rating (left_pokemon_name, right_pokemon_name, who_won) VALUES ("'+pokemon_1+'","'+pokemon_2+'","'+winner+'")');
   last_result_list = "Last result was: <br>" +pokemon_1 + " drew against " + pokemon_2;}
   next_pokemon();
 
