@@ -1,7 +1,13 @@
 import dotenv from 'dotenv'
 import mysql from 'mysql2'
 
-dotenv.config()
+dotenv
+  .config({
+    path: '../.env'
+  })
+
+
+const DATABASE_URL = process.env.DATABASE_URL
 
 const connection = mysql.createConnection(process.env.DATABASE_URL)
 connection.query(

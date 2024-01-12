@@ -16,6 +16,7 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.490.0",
     "aws-sdk": "^2.1533.0",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "mysql2": "^3.7.0"
   }
 }
