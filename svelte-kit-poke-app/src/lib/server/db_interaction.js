@@ -11,14 +11,21 @@ connection.query(
     if (err) {
       console.log(err.message)
     } else {
-      console.log('query success')   
+      console.log('results: ', results)
+      console.log('fields: ', fields)
     }
   }
 )
+
+
+
+
 console.log()
 console.log('query done');
 connection.end()
 }
+
+
 
 export { query };
 
@@ -26,4 +33,4 @@ export { query };
 
 // query('create table if not exists pokemon_rating (id int primary key auto_increment, left_pokemon_name varchar(255), right_pokemon_name varchar(255), who_won varchar(1), datetime_created datetime default current_timestamp)')
 // query('insert into pokemon_rating (left_pokemon_name, right_pokemon_name, who_won) values ("'+oddish+'","'+gloom+'","'+who_won+'")')
-// query('show columns from pokemon_rating');
+query('select count(*) from pokemon_rating');
