@@ -2,9 +2,29 @@
 import { onMount } from 'svelte';
 import dict from './dict.js';
 import list from './list.js';
-// import query from './import_test.js'
+import { get } from '../routes/api/read.js'
 
-// query('show columns from pokemon rating');
+import dotenv from 'dotenv'
+// import mysql from 'mysql2'
+
+// function query (sql) {
+// const DATABASE_URL = process.env.DATABASE_URL;
+// dotenv.config({path: '../.env'});
+// const connection = mysql.createConnection(process.env.DATABASE_URL)
+// connection.query(
+//   sql,
+//   function (err, results, fields) {
+//     if (err) {
+//       console.log(err.message)
+//     } else {
+//       console.log('query success')   
+//     }
+//   }
+// )
+// console.log('query done');
+// connection.end()
+// }
+
 
 let pokemon_imgs = dict;
 let pokemon_list = list;

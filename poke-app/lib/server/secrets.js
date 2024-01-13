@@ -1,0 +1,1 @@
+export const secret_text = 'defo_secret_text'
