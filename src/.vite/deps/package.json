@@ -1,9 +1,0 @@
-{
-  "type": "module",
-  "fs": {
-    "allow": [
-      "read",
-      "write"
-    ]
-  }
-}
