@@ -26,4 +26,4 @@ export { query };
 
 // query('create table if not exists pokemon_rating (id int primary key auto_increment, left_pokemon_name varchar(255), right_pokemon_name varchar(255), who_won varchar(1), datetime_created datetime default current_timestamp)')
 // query('insert into pokemon_rating (left_pokemon_name, right_pokemon_name, who_won) values ("'+oddish+'","'+gloom+'","'+who_won+'")')
-query('show columns from pokemon_rating');
+// query('show columns from pokemon_rating');
