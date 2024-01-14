@@ -89,9 +89,6 @@ def battles_to_elo():
     elo_df['losses'] = elo_df['losses'].astype(int)
     elo_df['draws'] = elo_df['draws'].astype(int)
     elo_df['win_rate'] = elo_df['win_rate'].astype(float)
-
-    database_query('drop table elo_table')
-    database_query('create table elo_table (pokemon varchar(50), elo int, battles int, wins int, losses int, draws int, win_rate float)')
     
     rows = [tuple(x) for x in elo_df.to_numpy()]
     combined_row_string = ''
