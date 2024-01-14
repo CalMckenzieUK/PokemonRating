@@ -45,7 +45,7 @@
 
       
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", url_start.concat(pokemon_1,"&right=",pokemon_2,"&winner=1"));
+      xhr.open("POST", url_start.concat(pokemon_1,"&right=",pokemon_2,"&winner=",winner));
       xhr.send('lol')
       last_result_list = "Last result was: <br>" + pokemon_1+ " beats " + pokemon_2;}
       next_pokemon();
@@ -60,7 +60,7 @@
       }
       else {
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", url_start.concat(pokemon_1,"&right=",pokemon_2,"&winner=1"));
+      xhr.open("POST", url_start.concat(pokemon_1,"&right=",pokemon_2,"&winner=",winner));
       xhr.send('lol')
       last_result_list = "Last result was: <br>" +pokemon_2 + " beats " + pokemon_1;}
       next_pokemon();
@@ -75,7 +75,7 @@
       }
       else {
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", url_start.concat(pokemon_1,"&right=",pokemon_2,"&winner=1"));
+      xhr.open("POST", url_start.concat(pokemon_1,"&right=",pokemon_2,"&winner=",winner));
       xhr.send('lol');
       last_result_list = "Last result was: <br>" +pokemon_1 + " drew against " + pokemon_2;
       }
