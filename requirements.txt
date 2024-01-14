@@ -2,3 +2,6 @@ lxml
 pandas
 bs4
 requests
+python-dotenv
+mysqlclient
+sqlalchemy
