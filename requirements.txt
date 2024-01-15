@@ -3,5 +3,15 @@ pandas
 bs4
 requests
 python-dotenv
-mysqlclient
-sqlalchemy
+streamlit
+pykg-config
+Flask-SQLAlchemy
+mysql-connector-python
+SQLAlchemy
+mysqlclient==2.2.1
+datetime
+markupsafe
+Flask == 2.3.1
+selenium == 4.15.2
+streamlit_aggrid
+gunicorn==20.0.4
