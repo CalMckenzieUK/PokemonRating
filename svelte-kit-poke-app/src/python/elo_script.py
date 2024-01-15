@@ -95,7 +95,9 @@ def battles_to_elo():
     for i in rows:
         combined_row_string = combined_row_string + str(i) + ', '
     combined_row_string = combined_row_string[:-2]
-     
+    database_query('drop table elo_table')
+    create_elo_table()
+
     database_query('insert into elo_table values {}'.format(combined_row_string))
 
     rows = [tuple(x) for x in battle_df.to_numpy()]

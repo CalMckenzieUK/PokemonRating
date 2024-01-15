@@ -36,6 +36,9 @@ def database_query(sql_query):
         connection.close()
 
 if __name__ == '__main__':
-    print( database_query('select * from pokemon_rating'))
-    # print( database_query('show columns from elo_table'))
+    print( database_query('''
+    select count(*) from elo_table
+    
+                        
+                          '''))    
     
