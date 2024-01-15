@@ -217,7 +217,7 @@ body {
         <br><br>
 
         <div class="elo_table">
-            <embed src="https://pokemonrating-5vda68brbsp8jnobggqe9u.streamlit.app/?embedded=true" width="500px" height="500px" />
+            <embed src="https://pokemonrating-5vda68brbsp8jnobggqe9u.streamlit.app/?embedded=true" width="750px" height="500px" />
 
         </div>
 
