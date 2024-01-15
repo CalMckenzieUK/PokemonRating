@@ -37,5 +37,5 @@ def database_query(sql_query):
 
 if __name__ == '__main__':
     print( database_query('select * from pokemon_rating'))
-    print( database_query('show columns from elo_table'))
-    # print( database_query('select * from historical_battles'))
+    # print( database_query('show columns from elo_table'))
+    

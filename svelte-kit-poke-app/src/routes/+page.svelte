@@ -1,22 +1,9 @@
 <script>
     import dict from '../lib/dict.js';
     import list from '../lib/list.js';    
-    import { enhance } from '$app/forms';
-
-
-    let submitting = false;
-    function onSubmit() {
-    submitting = true;
-
-    return ({ update }) => {
-      submitting = false;
-      update();      
-    };
-    }
-
+ 
     let url_start = "?/uploadResult&left="
-    let url_middle = "&right="
-    let url_end = "&winner="
+
 
     let pokemon_imgs = dict;
     let pokemon_list = list;
@@ -26,10 +13,6 @@
     let pokemon_img_1 = "https://wiki.p-insurgence.com/images/0/09/722.png";
     let pokemon_img_2 = "https://wiki.p-insurgence.com/images/0/09/722.png";
     
-    
-    let counter_1 = 0;
-    let counter_2 = 0;
-    let dunno_counter = 0;
     var last_result = {pokemon_1: 'none', pokemon_2: 'none'};
     var last_result_list = "Click a MissingNo to start...";
     
@@ -43,7 +26,6 @@
       }
       else {
 
-      
       var xhr = new XMLHttpRequest();
       xhr.open("POST", url_start.concat(pokemon_1,"&right=",pokemon_2,"&winner=",winner));
       xhr.send('lol')
@@ -94,6 +76,7 @@
       pokemon_img_1 = pokemon_imgs[pokemon_1];
       pokemon_img_2 = pokemon_imgs[pokemon_2];
     };
+
     </script>
    
    <style>
@@ -231,8 +214,16 @@ body {
     </form>
         <br>
         <div class="previous_battle"> <br> {@html last_result_list} </div>
+        <br><br>
+
+        <div class="elo_table">
+
+          
+
+        </div>
+
+
     </body>
-    
     </main>
 
 
