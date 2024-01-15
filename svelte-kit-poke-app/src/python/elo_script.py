@@ -110,6 +110,8 @@ def battles_to_elo():
     database_query('delete from pokemon_rating where id in ({})'.format(', '.join(map(str, battle_ids_processed))))
 
 if __name__ == '__main__':
+    print('starting elo script')
     create_elo_table()
     create_historical_battles()
     battles_to_elo()
+    print('completed elo script')

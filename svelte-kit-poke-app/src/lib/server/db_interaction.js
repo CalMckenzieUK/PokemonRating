@@ -16,15 +16,31 @@ connection.query(
     }
   }
 )
-
-
-
-
 console.log()
 console.log('query done');
 connection.end()
 }
 
+//function to return the results of a query as an json object
+function queryJSON (sql) {
+  const DATABASE_URL = process.env.DATABASE_URL;
+  dotenv.config({path: '../.env'});
+  const connection = mysql.createConnection(process.env.DATABASE_URL)
+  connection.query(
+    sql,
+    function (err, results, fields) {
+      if (err) {
+        console.log(err.message)
+      } else {
+        console.log('results: ', results)
+        console.log('fields: ', fields)
+      }
+    }
+  )
+  console.log()
+  console.log('query done');
+  connection.end()
+  }
 
 
 export { query };

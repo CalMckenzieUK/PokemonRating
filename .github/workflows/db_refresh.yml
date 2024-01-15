@@ -1,0 +1,56 @@
+
+name: Python application
+
+on: 
+  workflow_dispatch:
+  schedule:
+  - cron: '0 7,19 * * *' 
+
+  
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          DATABASE: ${{ secrets.DATABASE }}
+          DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          DATABASE_SERVICE_ID: ${{ secrets.DATABASE_SERVICE_ID }}
+          DATABASE_SERVICE_TOKEN: ${{ secrets.DATABASE_SERVICE_TOKEN }}
+          DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+          MYSQL_ATTR_SSL_CA: ${{ secrets.MYSQL_ATTR_SSL_CA }}
+          PORT: ${{ secrets.PORT }}
+
+
+        ports:
+            - '3306:3306'
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run main
+      run: |
+        python3 svelte-kit-poke-app/src/python/elo_script.py
+      env:
+        DATABASE: ${{ secrets.DATABASE }}
+        DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+        DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+        DATABASE_SERVICE_ID: ${{ secrets.DATABASE_SERVICE_ID }}
+        DATABASE_SERVICE_TOKEN: ${{ secrets.DATABASE_SERVICE_TOKEN }}
+        DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+        MYSQL_ATTR_SSL_CA: ${{ secrets.MYSQL_ATTR_SSL_CA }}
+        PORT: ${{ secrets.PORT }}
