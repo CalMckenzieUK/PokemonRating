@@ -80,8 +80,26 @@ def battles_to_elo():
             elo_dict[left_pokemon]['win_rate'] = elo_dict[left_pokemon]['wins'] / elo_dict[left_pokemon]['battles']
             elo_dict[right_pokemon]['win_rate'] = elo_dict[right_pokemon]['wins'] / elo_dict[right_pokemon]['battles']
     
+
+
+
     elo_df = pd.DataFrame.from_dict(elo_dict, orient='index')
     elo_df = elo_df.reset_index()
+    elo_df = elo_df.rename(columns={'index': 'pokemon', 0: 'elo', 1: 'battles', 2: 'wins', 3: 'losses', 4: 'draws', 5: 'win_rate'})
+    print(elo_df.head())
+    
+    updated_pokemon = elo_df['pokemon']
+
+
+
+    #filter elo_table to only include pokemon that are not in the updated_pokemon list
+
+    elo_table = elo_table[~elo_table['pokemon'].isin(updated_pokemon)]
+
+    elo_df = pd.concat([elo_table, elo_df])
+    
+
+
     elo_df = elo_df.rename(columns={'index': 'pokemon'})
     elo_df['elo'] = elo_df['elo'].astype(int)
     elo_df['battles'] = elo_df['battles'].astype(int)
@@ -95,6 +113,8 @@ def battles_to_elo():
     for i in rows:
         combined_row_string = combined_row_string + str(i) + ', '
     combined_row_string = combined_row_string[:-2]
+
+    print(combined_row_string  )
     database_query('drop table elo_table')
     create_elo_table()
 

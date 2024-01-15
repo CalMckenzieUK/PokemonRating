@@ -36,9 +36,28 @@ def database_query(sql_query):
         connection.close()
 
 if __name__ == '__main__':
-    print( database_query('''
-    select count(*) from elo_table
+    sql = '''
+    create table historical_battles_2 
+    (battle_id int, 
+    left_pokemon varchar(50), 
+    right_pokemon varchar(50),
+    result varchar(1),
+    datetime_of_battle datetime) 
+    '''
+    print(database_query('show columns from pokemon_rating'))
+    # print(sql)
+    # print( database_query(f'{sql}')) 
     
-                        
-                          '''))    
+    # database_query('drop table historical_battles')
+    # database_query('create table historical_battles (battle_id int, left_pokemon varchar(50), right_pokemon varchar(50), result varchar(1), datetime_of_battle datetime)')
+    # print(database_query('''insert into historical_battles 
+    #                      select max(battle_id), max(left_pokemon), max(right_pokemon), max(result), 
+    #                      datetime_of_battle from historical_battles_2
+    #                      group by datetime_of_battle'''))
     
+    # print(database_query('select count(*) from historical_battles'))
+    
+    # print( database_query(''' insert into historical_battles_2 select * from historical_battles'''))
+    # print(database_query('show columns from historical_battles'))
+    # print(database_query('show columns from historical_battles_2'))
+    # print(database_query('drop table historical_battles_2'))
