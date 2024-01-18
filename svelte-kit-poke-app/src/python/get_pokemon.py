@@ -29,7 +29,7 @@ for i in array[1:]:
     if int(i[5]) > 0:
         individual_pokemon.append([i[1], 'U'])
 
-with open('/workspaces/PokemonRating/poke-app/src/dex.txt', 'r') as f:
+with open('/workspaces/PokemonRating/svelte-kit-poke-app/src/dex.txt', 'w') as f:
     pokedex = f.read().splitlines()
     pokedex = [i.replace('\t','').replace('\xa0',' ') for i in pokedex]
     pokedex = [i.split(',') for i in pokedex]
@@ -134,11 +134,11 @@ for i in individual_pokemon:
             pokemon_link_dict[str(i[0]+' '+i[1])] = link
 
 
-with open('/workspaces/PokemonRating/poke-app/src/pokemon_links.txt', 'w') as f:
-    for i in pokemon_link_dict:
-        f.write(str(i+', '+pokemon_link_dict[i])+'\n')
+# with open('/workspaces/PokemonRating/poke-app/src/pokemon_links.txt', 'w') as f:
+#     for i in pokemon_link_dict:
+#         f.write(str(i+', '+pokemon_link_dict[i])+'\n')
 
-with open('/workspaces/PokemonRating/poke-app/src/individual_pokemon.txt', 'w') as f:
+with open('/workspaces/PokemonRating/svelte-kit-poke-app/src/individual_pokemon.txt', 'w') as f:
     for i in individual_pokemon:
         f.write(str("'"+i[0]+' '+i[1])+"',\n")
 

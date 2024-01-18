@@ -36,15 +36,8 @@ def database_query(sql_query):
         connection.close()
 
 if __name__ == '__main__':
-    sql = '''
-    create table historical_battles_2 
-    (battle_id int, 
-    left_pokemon varchar(50), 
-    right_pokemon varchar(50),
-    result varchar(1),
-    datetime_of_battle datetime) 
-    '''
-    print(database_query('show columns from pokemon_rating'))
+    print(database_query('select * from pokemon_rating '))
+    # print(database_query('select * from pokemon_rating'))
     # print(sql)
     # print( database_query(f'{sql}')) 
     

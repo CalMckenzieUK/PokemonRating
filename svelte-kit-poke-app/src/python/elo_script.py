@@ -21,6 +21,7 @@ def battles_to_elo():
     elo_table['pokemon'] = elo_table['pokemon'].str.replace('%20',' ')
     battle_df['left_pokemon'] = battle_df['left_pokemon'].str.replace('%20',' ')
     battle_df['right_pokemon'] = battle_df['right_pokemon'].str.replace('%20',' ')
+    print(battle_df.head())
     for i in battle_df['left_pokemon'].unique():
         if i not in elo_array:
             if i not in elo_table['pokemon'].unique():
@@ -86,7 +87,7 @@ def battles_to_elo():
     elo_df = pd.DataFrame.from_dict(elo_dict, orient='index')
     elo_df = elo_df.reset_index()
     elo_df = elo_df.rename(columns={'index': 'pokemon', 0: 'elo', 1: 'battles', 2: 'wins', 3: 'losses', 4: 'draws', 5: 'win_rate'})
-    print(elo_df.head())
+    print(elo_df.head(10))
     
     updated_pokemon = elo_df['pokemon']
 
@@ -114,7 +115,6 @@ def battles_to_elo():
         combined_row_string = combined_row_string + str(i) + ', '
     combined_row_string = combined_row_string[:-2]
 
-    print(combined_row_string  )
     database_query('drop table elo_table')
     create_elo_table()
 
@@ -127,9 +127,9 @@ def battles_to_elo():
     combined_row_string = combined_row_string[:-2]
 
     battle_ids_processed = battle_df['battle_id'].to_list()
-    
-    database_query('insert into historical_battles values {}'.format(combined_row_string))
-    database_query('delete from pokemon_rating where id in ({})'.format(', '.join(map(str, battle_ids_processed))))
+    print(battle_ids_processed)
+    print(database_query('insert into historical_battles values {}'.format(combined_row_string)))
+    print(database_query('delete from pokemon_rating where id in ({})'.format(', '.join(map(str, battle_ids_processed)))))
 
 if __name__ == '__main__':
     print('starting elo script')
