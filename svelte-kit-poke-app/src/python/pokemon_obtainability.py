@@ -31,38 +31,72 @@ def pokemon_page(pokemon_name):
     #drop last item from pokemon_page_types
     pokemon_page_types = pokemon_page_types[:-1]
     type_array = []
+    type_headers = []
     for i in range(len(pokemon_page_types)):
         if 'Shiny:' in pokemon_page_types:
+            variation = ''
             if pokemon_page_types[i] == 'Normal:':
+                variation = pokemon_page_types[i-1]
+                type_headers.append(variation)
                 shiny_index = pokemon_page_types.index('Shiny:')
                 type_array.append(pokemon_page_types[i+1:shiny_index])
+                pokemon_page_types[i] = 'checked'
+                # pokemon_page_types[shiny_index] = 'checked'
             elif pokemon_page_types[i] == 'Shiny:':
                 dark_index = pokemon_page_types.index('Dark:')
                 type_array.append(pokemon_page_types[i+1:dark_index])
+                pokemon_page_types[i] = 'checked'
+                # pokemon_page_types[dark_index] = 'checked'
             elif pokemon_page_types[i] == 'Dark:':
                 golden_index = pokemon_page_types.index('Golden:')
                 type_array.append(pokemon_page_types[i+1:golden_index])
+                pokemon_page_types[i] = 'checked'
+                # pokemon_page_types[golden_index] = 'checked'
             elif pokemon_page_types[i] == 'Golden:':
                 type_array.append(pokemon_page_types[i+1])
+                pokemon_page_types[i] = 'checked'
         else:
+            variation = ''
             if pokemon_page_types[i] == 'Normal:':
+                variation = pokemon_page_types[i-1]
+                type_headers.append(variation)
                 shiny_index = pokemon_page_types.index('Shiny')
                 type_array.append(pokemon_page_types[i+1:shiny_index])
+                pokemon_page_types[i] = 'checked'
+                # pokemon_page_types[shiny_index] = 'checked'
             elif pokemon_page_types[i] == 'Shiny':
                 dark_index = pokemon_page_types.index('Dark:')
                 type_array.append(pokemon_page_types[i+1:dark_index])
+                pokemon_page_types[i] = 'checked'
+                # pokemon_page_types[dark_index] = 'checked'
             elif pokemon_page_types[i] == 'Dark:':
                 golden_index = pokemon_page_types.index('Golden:')
                 type_array.append(pokemon_page_types[i+1:golden_index])
+                pokemon_page_types[i] = 'checked'
+                # pokemon_page_types[golden_index] = 'checked'
             elif pokemon_page_types[i] == 'Golden:':
                 type_array.append(pokemon_page_types[i+1])
-
+                pokemon_page_types[i] = 'checked'
     type_dict = {}
-    type_dict[pokemon_name] = type_array[0]
-    type_dict['Shiny'+pokemon_name] = type_array[1]
-    type_dict['Dark'+pokemon_name] = type_array[2]
-    type_dict['Golden'+pokemon_name] = type_array[3]
-    print(type_dict)
+    if len(type_headers) == 1:
+        type_dict[pokemon_name] = type_array[0]
+        type_dict['Shiny'+pokemon_name] = type_array[1]
+        type_dict['Dark'+pokemon_name] = type_array[2]
+        type_dict['Golden'+pokemon_name] = type_array[3]
+    else:
+        for i in range(len(type_headers)):
+            base = i*4
+            type_dict[pokemon_name+' ('+type_headers[i]+')'] = type_array[base]
+            type_dict['Shiny'+pokemon_name+' ('+type_headers[i]+')'] = type_array[base+1]
+            type_dict['Dark'+pokemon_name+' ('+type_headers[i]+')'] = type_array[base+2]
+            type_dict['Golden'+pokemon_name+' ('+type_headers[i]+')'] = type_array[base+3]        
+    
+    # type_dict = {}
+    # type_dict[pokemon_name+' ('+type_array[0]+')'] = type_array[1]
+    # type_dict['Shiny'+pokemon_name+' ('+type_array[0]+')'] = type_array[2]
+    # type_dict['Dark'+pokemon_name+' ('+type_array[0]+')'] = type_array[3]
+    # type_dict['Golden'+pokemon_name+' ('+type_array[0]+')'] = type_array[4]
+    # print(type_dict)
     return type_dict
 
 
@@ -99,41 +133,52 @@ def pokemon_page_from_table(pokemon_name):
         else:
             delimited_by_headers.append(pokemon_page_types[pokemon_page_types.index(type_headers[i]):pokemon_page_types.index(type_headers[i+1])])
 
-    type_array = []
+
     for i in delimited_by_headers:
     
         for i in range(len(pokemon_page_types)):
-            
+            variation = ''
             if pokemon_page_types[i] == 'Normal:':
+                variation = pokemon_page_types[i-1]
                 try:
                     shiny_index = pokemon_page_types.index('Shiny:')
                 except:
                     shiny_index = pokemon_page_types.index('Shiny')
                 type_array.append(pokemon_page_types[i+1:shiny_index])
+                pokemon_page_types[i] = 'checked'
             elif pokemon_page_types[i] == 'Shiny:':
                 dark_index = pokemon_page_types.index('Dark:')
                 type_array.append(pokemon_page_types[i+1:dark_index])
+                pokemon_page_types[i] = 'checked'
+
             elif pokemon_page_types[i] == 'Dark:':
                 golden_index = pokemon_page_types.index('Golden:')
                 type_array.append(pokemon_page_types[i+1:golden_index])
+                pokemon_page_types[i] = 'checked'
+                # pokemon_page_types[golden_index] = 'checked'
             elif pokemon_page_types[i] == 'Golden:':
                 type_array.append(pokemon_page_types[i+1])
-    
+                pokemon_page_types[i] = 'checked'
     type_dict = {}
-
-    for i in type_headers:
-    
-        type_dict[pokemon_name+' ('+i+')'] = type_array[0]
-        type_dict['Shiny'+pokemon_name+' ('+i+')'] = type_array[1]
-        type_dict['Dark'+pokemon_name+' ('+i+')'] = type_array[2]
-        type_dict['Golden'+pokemon_name+' ('+i+')'] = type_array[3]
-    print(type_dict)
+    if len(type_headers) == 1:
+        type_dict[pokemon_name] = type_array[0]
+        type_dict['Shiny'+pokemon_name] = type_array[1]
+        type_dict['Dark'+pokemon_name] = type_array[2]
+        type_dict['Golden'+pokemon_name] = type_array[3]
+    else:
+        for i in range(len(type_headers)):
+            base = i*4
+            type_dict[pokemon_name+' ('+type_headers[i]+')'] = type_array[base]
+            type_dict['Shiny'+pokemon_name+' ('+type_headers[i]+')'] = type_array[base+1]
+            type_dict['Dark'+pokemon_name+' ('+type_headers[i]+')'] = type_array[base+2]
+            type_dict['Golden'+pokemon_name+' ('+type_headers[i]+')'] = type_array[base+3]     
+    # print(type_dict)
     return type_dict
 
 
 def main():
     
-    # pokemon_page('Meloetta')
+    # print(pokemon_page('Pumpkaboo'))
 
     pokemon_list = get_pokemon_list()
     pokemon_list = [i.split('(')[0].strip() for i in pokemon_list]
@@ -142,9 +187,32 @@ def main():
     for i in pokemon_list:
         print(i)
         try:
-            pokemon_info.append(pokemon_page(i))
+            type_dicts = pokemon_page(i)
+            for key, value in type_dicts.items():
+                if " (Normal)" in str(key):
+                    key = str(key).replace(" (Normal)", "")
+                    if '"' in str(value):
+                        value = str(value).replace('"', '')
+                        pokemon_info.append(f'"{str(key)}": "{value}",') 
+                if '"' in str(value):
+                        value = str(value).replace('"', '')
+                        pokemon_info.append(f'"{str(key)}": "{value}",') 
+                pokemon_info.append(f'"{str(key)}": "{str(value)}",')
+            # print(1, type_dicts)
         except:
-            pokemon_info.append(pokemon_page_from_table(i))
+            type_dicts = pokemon_page_from_table(i)
+            for key, value in type_dicts.items():
+                if " (Normal)" in str(key):
+                    key = str(key).replace(" (Normal)", "")
+                    if '"' in str(value):
+                        value = str(value).replace('"', '')
+                        pokemon_info.append(f'"{str(key)}": "{value}",') 
+                if '"' in str(value):
+                        value = str(value).replace('"', '')
+                        pokemon_info.append(f'"{str(key)}": "{value}",') 
+                pokemon_info.append(f'"{str(key)}": "{str(value)}",')
+            # print(2, type_dicts)
+        # print(pokemon_info)
 
     with open('svelte-kit-poke-app/src/python/pokemon_obtainability_list.txt', 'w') as f:
         for i in pokemon_info:

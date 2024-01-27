@@ -1,15 +1,26 @@
 <script>
     import dict from '../lib/dict.js';
-    import list from '../lib/list.js';    
- 
+    import list from '../lib/list.js'; 
+    import info from '../lib/pokemon_obtainability_list.js' 
+    import rarity from '../lib/rarity.js'
+    
     let url_start = "?/uploadResult&left="
 
-
+    let pokemon_obtainability = info;
     let pokemon_imgs = dict;
     let pokemon_list = list;
+    let pokemon_rarity = rarity;
+    let quantity_var = "";
+    let gender_var = "";
+    let gender_disc = "";
+
     
     let pokemon_1 = "";
     let pokemon_2 = "";
+    let pokemon_1_no_gender = "";
+    let pokemon_2_no_gender = "";
+  
+
     let pokemon_img_1 = "https://wiki.p-insurgence.com/images/0/09/722.png";
     let pokemon_img_2 = "https://wiki.p-insurgence.com/images/0/09/722.png";
     
@@ -68,13 +79,29 @@
     function next_pokemon(){
       let new_one = pokemon_list[Math.floor(Math.random() * pokemon_list.length)];
       let new_two = pokemon_list[Math.floor(Math.random() * pokemon_list.length)]
+      quantity_var = 'Quantity in game: '
+      gender_var = 'Obtained by:'
+      gender_disc = '(Obtainability info is NOT gender specific)'
       while (new_one == new_two){
         new_two = pokemon_list[Math.floor(Math.random() * pokemon_list.length)]
       }
+      
       pokemon_1 = new_one;
       pokemon_2 = new_two;
       pokemon_img_1 = pokemon_imgs[pokemon_1];
       pokemon_img_2 = pokemon_imgs[pokemon_2];
+
+      pokemon_1_no_gender = pokemon_1.replace(' M', '').replace(' F', '').replace(' U', '').replace(' G','')
+      if (pokemon_1_no_gender.includes('Unown')) {
+        pokemon_1_no_gender = pokemon_1_no_gender.replace(indexOf('Unown')+6, '')
+      }
+
+      pokemon_2_no_gender = pokemon_2.replace(' M', '').replace(' F', '').replace(' U', '').replace(' G','')
+      if (pokemon_2_no_gender.includes('Unown')) {
+        pokemon_2_no_gender = pokemon_2_no_gender.replace(indexOf('Unown')+6, '')
+      }
+      
+      
     };
 
     </script>
@@ -165,7 +192,8 @@ body {
     max-width: max-content;
     max-height: max-content;
     border-radius: 10px;
-    padding-top: 50px;
+    padding-top: 5px;
+
 }
 .previous_battle {
     font-size: max(10px, 16px);
@@ -181,7 +209,6 @@ body {
     color: black;
     /* padding: 15px 15vw; */
     /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); */
-    
 }
 
 
@@ -193,17 +220,27 @@ body {
         <header draggable="false">
             <h1>Which would you rather have?</h1>
         </header>
+        <p><b>{gender_disc}</b></p>
     <div class="pair-container">
       <form name='one_wins'>
     <div class="container-1" on:click={one_wins} draggable="false">    
       <h2>{pokemon_1}</h2>
-                <img src={pokemon_img_1} class="image" alt="Placeholder" draggable="false">
+                <img src={pokemon_img_1} class="image" alt="Placeholder" draggable="false">    
+                <div class="info1" draggable="false">
+                  <p>{quantity_var} <b>{rarity[pokemon_1]}</b></p>  
+                  <!-- <p> {gender_var}</p>   -->
+                  <p><i> {pokemon_obtainability[pokemon_1_no_gender]}</i> </p> 
+                    
         </div>
     </form>
     <form name='two_wins'>
         <div class="container-2" on:click={two_wins} draggable="false">
                 <h2>{pokemon_2}</h2>
                 <img src={pokemon_img_2} class="image" alt="Placeholder" draggable="false">
+                <div class="info2" draggable="false">
+                  <p>{quantity_var} <b>{rarity[pokemon_2]}</b></p>
+                  <!-- <p> {gender_var}</p>   -->
+                  <p> <i>{pokemon_obtainability[pokemon_2_no_gender]} </i></p> 
         </div>
     </form>
     </div>

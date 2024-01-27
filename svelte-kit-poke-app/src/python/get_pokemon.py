@@ -21,13 +21,13 @@ for i in rarity_table:
 individual_pokemon = []
 for i in array[1:]:
     if int(i[2]) > 0:
-        individual_pokemon.append([i[1], 'M'])
+        individual_pokemon.append([i[1], 'M', i[2]])
     if int(i[3]) > 0:
-        individual_pokemon.append([i[1], 'F'])
+        individual_pokemon.append([i[1], 'F', i[3]])
     if int(i[4]) > 0:
-        individual_pokemon.append([i[1], 'G'])
+        individual_pokemon.append([i[1], 'G', i[4]])
     if int(i[5]) > 0:
-        individual_pokemon.append([i[1], 'U'])
+        individual_pokemon.append([i[1], 'U', i[5]])
 
 with open('/workspaces/PokemonRating/svelte-kit-poke-app/src/dex.txt', 'w') as f:
     pokedex = f.read().splitlines()
