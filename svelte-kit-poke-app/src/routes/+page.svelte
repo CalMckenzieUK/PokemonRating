@@ -101,7 +101,6 @@
         pokemon_2_no_gender = pokemon_2_no_gender.replace(indexOf('Unown')+6, '')
       }
       
-      
     };
 
     </script>
